@@ -22,14 +22,12 @@ public:
     Person *getFather() const;
     friend std::ostream& operator << (std::ostream& ostream, const Person& other);
     std::string toString() const;
-    Person& operator=(const Person&);
 
-    Person(const Person& other);
     static Person createAdam();
     static Person createEva();
     static Person giveBirth(const std::string& aName, const Gender& gender, Person* Mother, Person* Father = nullptr);
 
-    virtual ~Person();
+    virtual ~Person() = default;
 
 private:
     const int _ID;
@@ -40,8 +38,9 @@ private:
     Person* _father;
 
     Person(const std::string& aName, const Gender& gender);
+    Person(const Person&) = delete;
+    Person& operator=(const Person&) = delete;
     static std::string getGender(Gender gender);
-    void Clone(const Person&);
 };
 
 

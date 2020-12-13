@@ -26,11 +26,6 @@ Person::Person(const std::string& aName, const Gender& gender) : _ID(++_nextID){
 
 }
 
-Person::Person(const Person& other): _ID(_nextID++)
-{
-    Clone(other);
-}
-
 Person Person::giveBirth(const std::string& aName, const Gender& gender, Person* Mother, Person* Father) {
     if((Father == nullptr || Father->_gender == Person::Gender::MALE) && (Mother->_gender == Person::Gender::FEMALE))
         return Person(aName, gender, Mother, Father);
@@ -101,26 +96,11 @@ std::string Person::getGender(Gender gender) {
     }
 }
 
-Person& Person::operator=(const Person& p)
-{
-    if (this != &p) {
-        Clone(p);
-    }
-    return *this;
-}
-
-void Person::Clone(const Person& other) {
-    _name = other._name;
-}
-
 std::ostream& operator<<(std::ostream& ostream, const Person& other) {
     ostream << other.toString();
 
     return ostream;
 }
-
-
-Person::~Person() = default;
 
 
 
