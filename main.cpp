@@ -34,7 +34,8 @@ int main() {
 
         //std::cout << Adam.getMother()->toString() << std::endl;
 
-        Person Vasya = Person::giveBirth("Vasya", Person::Gender::MALE, nullptr, &Adam);
+        //Person Vasya = Person::giveBirth("Vasya", Person::Gender::MALE, nullptr, &Adam);
+        //Person Ivan2 = Person("Ivan", Person::Gender::MALE, nullptr, &Adam);
 
      }
     catch (std::exception &e){

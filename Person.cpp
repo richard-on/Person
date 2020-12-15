@@ -11,6 +11,9 @@ bool AdamIsCreated = false;
 bool EvaIsCreated = false;
 
 Person::Person(const std::string& aName,const Gender& gender, Person* Mother, Person* Father) : _ID(++_nextID) {
+    if(Mother == nullptr) {
+        throw std::exception("The child's mother must always be defined.");
+    }
     if((Father == nullptr || Father->_gender == Person::Gender::MALE) && (Mother->_gender == Person::Gender::FEMALE)) {
         _mother = Mother;
         _father = Father;
@@ -31,9 +34,6 @@ Person::Person(const std::string& aName, const Gender& gender) : _ID(++_nextID){
 }
 
 Person Person::giveBirth(const std::string& aName, const Gender& gender, Person* Mother, Person* Father) {
-    if(Mother == nullptr) {
-        throw std::exception("The child's mother must always be defined.");
-    }
     return Person(aName, gender, Mother, Father);
 
 }
