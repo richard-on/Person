@@ -31,6 +31,9 @@ Person::Person(const std::string& aName, const Gender& gender) : _ID(++_nextID){
 }
 
 Person Person::giveBirth(const std::string& aName, const Gender& gender, Person* Mother, Person* Father) {
+    if(Mother == nullptr) {
+        throw std::exception("The child's mother must always be defined.");
+    }
     return Person(aName, gender, Mother, Father);
 
 }

@@ -32,7 +32,9 @@ int main() {
         std::cout << Pavel.getMother()->toString() << std::endl;
         //std::cout << Pavel.getFather()->toString() << std::endl;
 
-        std::cout << Adam.getMother()->toString() << std::endl;
+        //std::cout << Adam.getMother()->toString() << std::endl;
+
+        Person Vasya = Person::giveBirth("Vasya", Person::Gender::MALE, nullptr, &Adam);
 
      }
     catch (std::exception &e){
