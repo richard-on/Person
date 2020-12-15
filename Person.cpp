@@ -79,6 +79,9 @@ const std::string &Person::getName() const {
 }
 
 Person *Person::getMother() const {
+    if(_mother == nullptr){
+        throw std::exception("This person's mother has not been defined.");
+    }
     return _mother;
 }
 

@@ -30,7 +30,9 @@ int main() {
         std::cout << Pavel.getId() << std::endl;
         std::cout << Pavel.getName() << std::endl;
         std::cout << Pavel.getMother()->toString() << std::endl;
-        std::cout << Pavel.getFather()->toString() << std::endl;
+        //std::cout << Pavel.getFather()->toString() << std::endl;
+
+        std::cout << Adam.getMother()->toString() << std::endl;
 
      }
     catch (std::exception &e){
