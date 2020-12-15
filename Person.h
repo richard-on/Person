@@ -40,6 +40,7 @@ private:
     Person(const std::string& aName, const Gender& gender);
     Person(const Person&) = delete;
     Person& operator=(const Person&) = delete;
+
     static std::string getGender(Gender gender);
 };
 

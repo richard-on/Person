@@ -11,11 +11,15 @@ bool AdamIsCreated = false;
 bool EvaIsCreated = false;
 
 Person::Person(const std::string& aName,const Gender& gender, Person* Mother, Person* Father) : _ID(++_nextID) {
+    if((Father == nullptr || Father->_gender == Person::Gender::MALE) && (Mother->_gender == Person::Gender::FEMALE)) {
+        _mother = Mother;
+        _father = Father;
+    }
+    else
+        throw std::exception("The child must have FEMALE mother and MALE father.");
+
     _name = aName;
     _gender = gender;
-    _mother = Mother;
-    _father = Father;
-
 }
 
 Person::Person(const std::string& aName, const Gender& gender) : _ID(++_nextID){
@@ -27,10 +31,8 @@ Person::Person(const std::string& aName, const Gender& gender) : _ID(++_nextID){
 }
 
 Person Person::giveBirth(const std::string& aName, const Gender& gender, Person* Mother, Person* Father) {
-    if((Father == nullptr || Father->_gender == Person::Gender::MALE) && (Mother->_gender == Person::Gender::FEMALE))
-        return Person(aName, gender, Mother, Father);
-    else
-        throw std::exception("The child must have FEMALE mother and MALE father.");
+    return Person(aName, gender, Mother, Father);
+
 }
 
 Person Person::createAdam() {
@@ -56,13 +58,13 @@ Person Person::createEva() {
 
 std::string Person::toString() const {
     std::string output;
-    output += "Name: " + _name;
-    output += ", Gender: " + getGender(_gender);
+    output += _name;
+    output += " " + getGender(_gender);
     if(_mother != nullptr) {
-        output += ", Mother's name: " + (_mother)->_name;
+        output += " " + (_mother)->_name;
     }
     if(_father != nullptr) {
-        output += ", Father's name: " + (_father)->_name;
+        output += " " + (_father)->_name;
     }
 
     return output;
@@ -97,7 +99,14 @@ std::string Person::getGender(Gender gender) {
 }
 
 std::ostream& operator<<(std::ostream& ostream, const Person& other) {
-    ostream << other.toString();
+    ostream << "Name: " << other._name;
+    ostream << ", Gender: " << Person::getGender(other._gender);
+    if(other._mother != nullptr) {
+        ostream << ", Mother's name: " << (other._mother)->_name;
+    }
+    if(other._father != nullptr) {
+        ostream << ", Father's name: " << (other._father)->_name;
+    }
 
     return ostream;
 }

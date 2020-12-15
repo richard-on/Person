@@ -11,19 +11,21 @@ int main() {
         std::cout << Adam.toString() << std::endl;
         std::cout << Eva.toString() << std::endl;
 
-        Person Vlad = Person("Vlad", Person::Gender::MALE, &Eva, &Adam);
+        Person Vlad = Person("Vlad", Person::Gender::MALE, &Eva);
         std::cout << Vlad.toString() << std::endl;
 
         Person Ivan = Person::giveBirth("Ivan", Person::Gender::MALE, &Eva, &Adam);
         std::cout << Ivan.toString() << std::endl;
 
-        Person Lena = Person::giveBirth("Lena", Person::Gender::FEMALE, &Eva, &Adam);
+        Person Lena = Person::giveBirth("Lena", Person::Gender::FEMALE, &Eva);
         std::cout << Lena.toString() << std::endl;
 
         Person Pavel = Person::giveBirth("Pavel", Person::Gender::MALE, &Lena);
         std::cout << Pavel.toString() << std::endl;
 
         std::cout << Pavel << std::endl;
+        //Person Pavel2 = Person(Pavel);
+        //std::cout << Pavel2 << std::endl;
 
         std::cout << Pavel.getId() << std::endl;
         std::cout << Pavel.getName() << std::endl;
